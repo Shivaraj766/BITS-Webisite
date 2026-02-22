@@ -6,20 +6,23 @@ const slides = [
   {
     headline: "Shaping Tomorrow's Engineers",
     subheadline: "World-class education in the heart of Andhra Pradesh",
-    bg: "from-[#0d1b4b] via-[#1a2f6e] to-[#0d1b4b]",
+    
     accent: "text-yellow-400",
+    image: "/FIRSTIMG.jpg",
   },
   {
     headline: "Innovation Meets Excellence",
     subheadline: "State-of-the-art research facilities and industry partnerships",
     bg: "from-[#0d1b4b] via-[#1a2f6e] to-[#0d1b4b]",
     accent: "text-yellow-400",
+    image: "/SECONDIMG.jpg",
   },
   {
     headline: "Your Future Starts Here",
     subheadline: "100% placement assistance with top recruiters across India",
     bg: "from-[#0d1b4b] via-[#1a2f6e] to-[#0d1b4b]",
     accent: "text-yellow-400",
+    image: "/THIRDIMG.jpg",
   },
 ];
 
@@ -42,24 +45,27 @@ export default function Hero() {
 
   return (
     <section
-      className={`relative bg-gradient-to-br ${slide.bg} text-white transition-all duration-700 overflow-hidden`}
-      style={{ minHeight: "80vh" }}
+      className={`relative isolate  text-white transition-all duration-700 overflow-hidden`}
+      style={{ minHeight: "85vh" }}
     >
-      {/* Background pattern */}
-      <div className="absolute inset-0 opacity-10">
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-          }}
-        />
+      <div className="absolute inset-0">
+        {slides.map((item, i) => (
+          <div
+            key={item.headline}
+            className={`absolute inset-0 bg-cover bg-center transition-all duration-1000 ${
+              i === current ? "opacity-65 scale-100" : "opacity-0 scale-105"
+            }`}
+            style={{ backgroundImage: `url(${item.image})` }}
+          />
+        ))}
       </div>
 
-      {/* Decorative circles */}
-      <div className="absolute top-20 right-10 w-72 h-72 rounded-full bg-white/5 blur-3xl"></div>
-      <div className="absolute bottom-10 left-10 w-96 h-96 rounded-full bg-white/5 blur-3xl"></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-black/35 via-black/45 to-black/55" />
+      <div className="absolute inset-0 opacity-10 [background-image:linear-gradient(to_right,rgba(255,255,255,0.08)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.08)_1px,transparent_1px)] [background-size:42px_42px]" />
 
-      <div className="relative max-w-7xl mx-auto px-4 py-20 md:py-32 flex flex-col lg:flex-row items-center gap-12">
+
+
+      <div className="relative z-10 max-w-7xl mx-auto px-4 py-20 md:py-32 flex flex-col lg:flex-row items-center gap-12">
         {/* Left content */}
         <div
           className={`flex-1 transition-all duration-500 ${
@@ -141,7 +147,7 @@ export default function Hero() {
           ].map((card) => (
             <div
               key={card.title}
-              className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-4 hover:bg-white/15 transition-colors cursor-pointer"
+              className="bg-white/10 backdrop-blur-md border border-white/30 rounded-xl p-4 hover:bg-white/15 transition-colors cursor-pointer"
             >
               <div className="flex items-center gap-3">
                 <span className="text-2xl">{card.icon}</span>
@@ -154,7 +160,7 @@ export default function Hero() {
           ))}
 
           {/* NIRF Score card */}
-          <div className="bg-[#c9962a]/20 border border-[#c9962a]/50 rounded-xl p-4">
+          <div className="bg-[#c9962a]/25 backdrop-blur-sm border border-[#c9962a]/50 rounded-xl p-4">
             <div className="text-xs text-[#c9962a] font-semibold mb-1">NIRF Score 2025</div>
             <div className="text-2xl font-bold text-white">68.45</div>
             <div className="text-xs text-gray-300">Engineering Category</div>
@@ -166,7 +172,7 @@ export default function Hero() {
       </div>
 
       {/* Slide indicators */}
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2">
+      <div className="absolute z-10 bottom-6 left-1/2 -translate-x-1/2 flex gap-2">
         {slides.map((_, i) => (
           <button
             key={i}
@@ -179,7 +185,7 @@ export default function Hero() {
       </div>
 
       {/* News ticker */}
-      <div className="absolute bottom-0 left-0 right-0 bg-black/30 backdrop-blur-sm py-2 overflow-hidden">
+      <div className="absolute z-10 bottom-0 left-0 right-0 bg-black/35 backdrop-blur-sm py-2 overflow-hidden">
         <div className="flex items-center">
           <div className="flex-shrink-0 bg-[#c9962a] text-white text-xs font-bold px-4 py-1 z-10">
             📢 LATEST

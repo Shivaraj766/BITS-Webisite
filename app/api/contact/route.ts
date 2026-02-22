@@ -3,16 +3,7 @@ import { Contact } from "@/app/api/models/contact";
 import { connectToDatabase } from "@/app/api/models/db";
 import { captureServerEvent } from "@/app/api/models/posthog";
 
-const MONGODB_URI = process.env.MONGODB_URI || "";
-
 export async function POST(request: NextRequest) {
-  if (!MONGODB_URI) {
-    return NextResponse.json(
-      { error: "Database not configured" },
-      { status: 500 }
-    );
-  }
-
   try {
     const body = await request.json();
     const { name, email, phone, inquiryType, message } = body;
@@ -54,11 +45,27 @@ export async function POST(request: NextRequest) {
   } catch (error) {
     console.error("Contact form error:", error);
 
-    if (error instanceof Error && /topology|server selection|connect/i.test(error.message)) {
+    if (error instanceof Error && /missing mongodb_uri/i.test(error.message)) {
       return NextResponse.json(
         {
-          error:
-            "Database connection failed. Check MONGODB_URI, Atlas network access/IP whitelist, and DNS connectivity.",
+          error: "Database not configured. Set MONGODB_URI (and optionally MONGODB_URI_FALLBACK).",
+        },
+        { status: 500 }
+      );
+    }
+
+    if (error instanceof Error && /topology|server selection|connect/i.test(error.message)) {
+      const message = error.message;
+      const isWhitelistIssue = /whitelist|network access|ip/i.test(message);
+      const isAuthIssue = /auth|authentication|bad auth/i.test(message);
+
+      return NextResponse.json(
+        {
+          error: isWhitelistIssue
+            ? "Database connection failed: Atlas IP access list blocked this machine. Add your current public IP (or 0.0.0.0/0 for development) in Atlas Network Access."
+            : isAuthIssue
+              ? "Database connection failed: invalid Atlas DB username/password or auth database. Recheck MONGODB_URI credentials."
+              : "Database connection failed. Check URI, Atlas network access/IP whitelist, and DNS. If SRV DNS fails, set MONGODB_URI_FALLBACK with a mongodb:// host list.",
         },
         { status: 500 }
       );

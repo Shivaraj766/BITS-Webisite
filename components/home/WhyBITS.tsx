@@ -1,3 +1,6 @@
+"use client";
+import { motion } from "framer-motion";
+
 const features = [
   {
     icon: "🎯",
@@ -43,45 +46,77 @@ const features = [
 
 export default function WhyBITS() {
   return (
-    <section className="py-16 bg-[#0d1b4b] text-white">
-      <div className="max-w-7xl mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="font-display font-bold text-3xl md:text-4xl text-white mb-4">
+    <section className="py-20 bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 text-white relative overflow-hidden">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,rgba(59,130,246,0.25),transparent_40%),radial-gradient(circle_at_80%_70%,rgba(139,92,246,0.25),transparent_40%)]" />
+      <div className="absolute inset-0 opacity-10 [background-image:linear-gradient(to_right,rgba(255,255,255,0.1)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.1)_1px,transparent_1px)] [background-size:50px_50px]" />
+      
+      <div className="relative z-10 max-w-7xl mx-auto px-4">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
+        >
+          <h2 className="font-display font-bold text-4xl md:text-5xl bg-gradient-to-r from-blue-200 via-cyan-200 to-purple-200 bg-clip-text text-transparent mb-4 drop-shadow-lg">
             Why Choose BITS?
           </h2>
-          <p className="text-gray-300 text-lg max-w-2xl mx-auto">
+          <p className="text-gray-200 text-lg max-w-2xl mx-auto">
             We provide an environment where talent meets opportunity, creating professionals 
             who lead industries and drive innovation.
           </p>
-        </div>
+        </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {features.map((f) => (
-            <div
+          {features.map((f, idx) => (
+            <motion.div
               key={f.title}
-              className="bg-white/5 hover:bg-white/10 border border-white/10 hover:border-[#c9962a]/50 rounded-xl p-6 transition-all duration-300 group"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: idx * 0.1, duration: 0.5 }}
+              whileHover={{ y: -8, scale: 1.05 }}
+              className="group bg-white/10 hover:bg-white/15 backdrop-blur-md border-2 border-white/20 hover:border-blue-400/60 rounded-2xl p-6 transition-all duration-300 shadow-xl hover:shadow-2xl hover:shadow-blue-500/20"
             >
-              <div className="text-3xl mb-4 group-hover:scale-110 transition-transform duration-200">
+              <motion.div
+                whileHover={{ scale: 1.2, rotate: 10 }}
+                transition={{ type: "spring", stiffness: 300 }}
+                className="text-4xl mb-4"
+              >
                 {f.icon}
-              </div>
-              <h3 className="font-semibold text-[#c9962a] text-lg mb-2">{f.title}</h3>
-              <p className="text-gray-400 text-sm leading-relaxed">{f.desc}</p>
-            </div>
+              </motion.div>
+              <h3 className="font-bold bg-gradient-to-r from-amber-400 to-yellow-400 bg-clip-text text-transparent text-xl mb-2">{f.title}</h3>
+              <p className="text-gray-300 text-sm leading-relaxed">{f.desc}</p>
+            </motion.div>
           ))}
         </div>
 
         {/* Vision & Mission boxes */}
-        <div className="grid md:grid-cols-2 gap-6 mt-12">
-          <div className="bg-[#c9962a]/20 border border-[#c9962a]/40 rounded-2xl p-8">
-            <h3 className="font-display font-bold text-2xl text-[#c9962a] mb-4">Our Vision</h3>
-            <p className="text-gray-200 leading-relaxed">
+        <div className="grid md:grid-cols-2 gap-6 mt-16">
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            whileHover={{ scale: 1.02, y: -5 }}
+            className="group bg-gradient-to-br from-amber-500/25 to-yellow-600/25 backdrop-blur-md border-2 border-amber-400/50 hover:border-amber-300 rounded-3xl p-8 transition-all duration-300 shadow-xl hover:shadow-2xl hover:shadow-amber-500/20"
+          >
+            <h3 className="font-display font-bold text-3xl bg-gradient-to-r from-amber-300 to-yellow-300 bg-clip-text text-transparent mb-4">Our Vision</h3>
+            <p className="text-gray-100 leading-relaxed text-lg">
               To be a globally recognized institution of excellence that transforms aspiring students 
               into innovative engineers, responsible citizens, and industry leaders who contribute 
               meaningfully to society and technological advancement.
             </p>
-          </div>
-          <div className="bg-white/5 border border-white/10 rounded-2xl p-8">
-            <h3 className="font-display font-bold text-2xl text-white mb-4">Our Mission</h3>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            whileHover={{ scale: 1.02, y: -5 }}
+            className="bg-white/10 backdrop-blur-md border-2 border-white/20 hover:border-white/40 rounded-3xl p-8 transition-all duration-300 shadow-xl hover:shadow-2xl"
+          >
+            <h3 className="font-display font-bold text-3xl bg-gradient-to-r from-blue-200 to-cyan-200 bg-clip-text text-transparent mb-4">Our Mission</h3>
             <ul className="space-y-2 text-gray-300 text-sm">
               {[
                 "Provide quality technical education with strong ethical values",
@@ -96,7 +131,7 @@ export default function WhyBITS() {
                 </li>
               ))}
             </ul>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

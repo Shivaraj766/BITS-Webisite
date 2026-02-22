@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 import PHProvider from "./posthog-provider";
 
 export const metadata: Metadata = {
-  title: "BITS Adoni - Bharat Institute of Technology & Science",
+  title: "BITS Adoni - Bheema Institute of Technology & Science",
   description:
     "BITS Adoni is a premier engineering institution in Andhra Pradesh offering undergraduate programs in engineering and technology. Affiliated to JNTUA, approved by AICTE.",
   keywords:

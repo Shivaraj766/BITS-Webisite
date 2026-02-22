@@ -8,6 +8,8 @@
     "start": "next start"
   },
   "dependencies": {
+    "framer-motion": "^12.34.3",
+    "lucide-react": "^0.575.0",
     "mongoose": "^9.2.1",
     "next": "14.2.5",
     "posthog-js": "^1.351.4",
