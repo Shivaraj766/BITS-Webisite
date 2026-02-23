@@ -3,13 +3,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 
 const slides = [
-  {
-    headline: "Shaping Tomorrow's Engineers",
-    subheadline: "World-class education in the heart of Andhra Pradesh",
-    
-    accent: "text-yellow-400",
-    image: "/FIRSTIMG.jpg",
-  },
+  
   {
     headline: "Innovation Meets Excellence",
     subheadline: "State-of-the-art research facilities and industry partnerships",
@@ -53,15 +47,15 @@ export default function Hero() {
           <div
             key={item.headline}
             className={`absolute inset-0 bg-cover bg-center transition-all duration-1000 ${
-              i === current ? "opacity-65 scale-100" : "opacity-0 scale-105"
+              i === current ? "opacity-90 scale-100" : "opacity-0 scale-105"
             }`}
             style={{ backgroundImage: `url(${item.image})` }}
           />
         ))}
       </div>
 
-      <div className="absolute inset-0 bg-gradient-to-b from-black/35 via-black/45 to-black/55" />
-      <div className="absolute inset-0 opacity-10 [background-image:linear-gradient(to_right,rgba(255,255,255,0.08)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.08)_1px,transparent_1px)] [background-size:42px_42px]" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/15 via-black/28 to-black/42" />
+      <div className="absolute inset-0 opacity-[0.04] [background-image:linear-gradient(to_right,rgba(255,255,255,0.08)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.08)_1px,transparent_1px)] [background-size:42px_42px]" />
 
 
 
@@ -78,13 +72,13 @@ export default function Hero() {
             Admissions Open 2026
           </div>
 
-          <h1 className="font-display font-bold text-4xl md:text-5xl lg:text-6xl leading-tight mb-6">
+          <h1 className="font-display font-bold text-4xl md:text-5xl lg:text-6xl leading-tight mb-6 drop-shadow-[0_3px_10px_rgba(0,0,0,0.65)]">
             {slide.headline}
           </h1>
-          <p className={`text-xl md:text-2xl ${slide.accent} font-semibold mb-4`}>
+          <p className={`text-xl md:text-2xl ${slide.accent} font-semibold mb-4 drop-shadow-[0_2px_8px_rgba(0,0,0,0.65)]`}>
             {slide.subheadline}
           </p>
-          <p className="text-gray-300 text-lg mb-8 max-w-lg">
+          <p className="text-gray-100 text-lg mb-8 max-w-lg drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)]">
             BITS Adoni — AICTE approved, JNTU affiliated institution offering premier engineering 
             education since 2008. Shaping 3000+ students annually.
           </p>
@@ -128,6 +122,11 @@ export default function Hero() {
 
         {/* Right — Featured cards */}
         <div className="flex-shrink-0 w-full lg:w-80 space-y-4">
+          <div className="inline-flex items-center gap-2 text-xs font-semibold tracking-wider uppercase text-white/90 bg-black/25 border border-white/20 rounded-full px-3 py-1.5 backdrop-blur-sm">
+            <span className="h-2 w-2 rounded-full bg-[#c9962a]" />
+            Campus Highlights
+          </div>
+
           {[
             {
               icon: "🏛️",
@@ -147,25 +146,30 @@ export default function Hero() {
           ].map((card) => (
             <div
               key={card.title}
-              className="bg-white/10 backdrop-blur-md border border-white/30 rounded-xl p-4 hover:bg-white/15 transition-colors cursor-pointer"
+              className="group bg-black/25 backdrop-blur-md border border-white/25 rounded-2xl p-4 hover:bg-black/35 hover:border-white/40 transition-all duration-300 cursor-pointer shadow-[0_8px_24px_rgba(0,0,0,0.25)] hover:shadow-[0_14px_34px_rgba(0,0,0,0.35)] hover:-translate-y-0.5"
             >
               <div className="flex items-center gap-3">
-                <span className="text-2xl">{card.icon}</span>
-                <div>
-                  <div className="font-semibold text-sm">{card.title}</div>
-                  <div className="text-xs text-gray-300">{card.desc}</div>
+                <span className="grid place-items-center w-11 h-11 rounded-xl bg-white/15 border border-white/20 text-2xl group-hover:bg-white/20 transition-colors">
+                  {card.icon}
+                </span>
+                <div className="min-w-0">
+                  <div className="font-semibold text-sm text-white leading-tight">{card.title}</div>
+                  <div className="text-xs text-slate-200/90 mt-1">{card.desc}</div>
                 </div>
               </div>
             </div>
           ))}
 
           {/* NIRF Score card */}
-          <div className="bg-[#c9962a]/25 backdrop-blur-sm border border-[#c9962a]/50 rounded-xl p-4">
-            <div className="text-xs text-[#c9962a] font-semibold mb-1">NIRF Score 2025</div>
-            <div className="text-2xl font-bold text-white">68.45</div>
-            <div className="text-xs text-gray-300">Engineering Category</div>
-            <div className="mt-2 h-1.5 bg-white/20 rounded-full overflow-hidden">
-              <div className="h-full bg-[#c9962a] rounded-full" style={{ width: "68.45%" }}></div>
+          <div className="bg-gradient-to-r from-[#c9962a]/35 to-[#c9962a]/20 backdrop-blur-md border border-[#c9962a]/60 rounded-2xl p-5 shadow-[0_10px_28px_rgba(0,0,0,0.3)]">
+            <div className="flex items-center justify-between mb-2">
+              <div className="text-xs text-[#f7d99a] font-semibold tracking-wide uppercase">NIRF Score 2025</div>
+              <span className="text-[10px] font-bold text-[#f7d99a] border border-[#f7d99a]/40 rounded-full px-2 py-0.5">Updated</span>
+            </div>
+            <div className="text-3xl font-extrabold text-white leading-none">68.45</div>
+            <div className="text-xs text-slate-100/85 mt-1">Engineering Category</div>
+            <div className="mt-3 h-2 bg-black/20 rounded-full overflow-hidden">
+              <div className="h-full bg-[#f6c45d] rounded-full shadow-[0_0_10px_rgba(246,196,93,0.8)]" style={{ width: "68.45%" }}></div>
             </div>
           </div>
         </div>

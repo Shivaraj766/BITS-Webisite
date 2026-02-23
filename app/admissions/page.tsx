@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Admissions 2024-25 | BITS Adoni",
-  description: "Apply to BITS Adoni for B.Tech programs. Learn about eligibility criteria, fee structure, scholarships, and the admission process.",
+  description: "Apply to BITS Adoni for B.Tech and M.Tech programs. Learn about eligibility criteria, fee structure, scholarships, and the admission process.",
 };
 
 export default function AdmissionsPage() {
@@ -22,7 +22,7 @@ export default function AdmissionsPage() {
           </div>
           <p className="text-orange-100 text-xl max-w-3xl">
             Begin your engineering journey at BITS Adoni — applications are now open 
-            for all undergraduate programs.
+            for undergraduate and postgraduate programs.
           </p>
         </div>
       </div>
@@ -35,7 +35,7 @@ export default function AdmissionsPage() {
           <div className="grid md:grid-cols-5 gap-4">
             {[
               { step: 1, title: "Check Eligibility", desc: "Verify you meet the educational qualifications for your chosen program.", icon: "📋" },
-              { step: 2, title: "Appear for Entrance", desc: "Appear in AP EAMCET / JEE for B.Tech programs.", icon: "✍️" },
+              { step: 2, title: "Appear for Entrance", desc: "Appear in AP EAMCET / JEE (B.Tech) or GATE / AP PGECET (M.Tech).", icon: "✍️" },
               { step: 3, title: "Apply Online", desc: "Fill the BITS Adoni application form at the official portal with all details.", icon: "💻" },
               { step: 4, title: "Document Submission", desc: "Submit required documents including certificates, ID proof, and photographs.", icon: "📁" },
               { step: 5, title: "Pay Fees & Confirm", desc: "Pay the admission fee to confirm your seat. Get started immediately!", icon: "✅" },
@@ -84,6 +84,16 @@ export default function AdmissionsPage() {
                   "Age: Minimum 17 years as on December 31 of admission year",
                 ],
               },
+              {
+                program: "M.Tech (All specializations)",
+                color: "border-orange-500",
+                criteria: [
+                  "B.E./B.Tech in relevant discipline from recognized university",
+                  "Minimum 50% aggregate marks (45% for reserved categories)",
+                  "Valid GATE score or AP PGECET rank",
+                  "Admission through counseling / management quota as per norms",
+                ],
+              },
             ].map((prog) => (
               <div key={prog.program} className={`bg-white rounded-xl p-6 border-t-4 ${prog.color} shadow-sm`}>
                 <h3 className="font-display font-bold text-[#0d1b4b] text-lg mb-4">{prog.program}</h3>
@@ -121,6 +131,7 @@ export default function AdmissionsPage() {
                   { prog: "B.Tech CSE / IT", tuition: "₹1,10,000", hostel: "₹65,000", total: "₹1,75,000" },
                   { prog: "B.Tech ECE / EEE", tuition: "₹1,05,000", hostel: "₹65,000", total: "₹1,70,000" },
                   { prog: "B.Tech Mech. / Civil", tuition: "₹1,00,000", hostel: "₹65,000", total: "₹1,65,000" },
+                  { prog: "M.Tech (All specializations)", tuition: "₹90,000", hostel: "₹65,000", total: "₹1,55,000" },
                 ].map((row, i) => (
                   <tr key={row.prog} className={i % 2 === 0 ? "bg-gray-50" : "bg-white"}>
                     <td className="p-4 font-semibold text-[#0d1b4b]">{row.prog}</td>
@@ -154,6 +165,7 @@ export default function AdmissionsPage() {
               { name: "Sports Scholarship", type: "Institutional", desc: "Students who represent state or national level in sports receive special scholarships.", amount: "₹15,000/year" },
               { name: "NRI Scholarship", type: "Special", desc: "Children of NRI parents studying at BITS Adoni receive special incentive discounts.", amount: "25% Discount" },
               { name: "Management Scholarship", type: "Institutional", desc: "Students from economically weaker sections (EWS) with EWS certificate.", amount: "₹20,000/year" },
+              { name: "PG Merit Scholarship", type: "Institutional", desc: "Top-performing M.Tech entrants with valid GATE / PGECET score are eligible.", amount: "Up to ₹30,000/year" },
               { name: "Central Scholarship", type: "Government", desc: "Post-matric scholarship for SC/ST/OBC students from Central Government.", amount: "As per eligibility" },
             ].map((sch) => (
               <div key={sch.name} className="bg-white/10 border border-white/20 rounded-xl p-6">

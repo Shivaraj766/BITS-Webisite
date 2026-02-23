@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Academic Programs | BITS Adoni",
-  description: "Explore B.Tech programs at BITS Adoni. AICTE approved, JNTU affiliated programs with industry-oriented curriculum.",
+  description: "Explore B.Tech and M.Tech programs at BITS Adoni. AICTE approved, JNTU affiliated programs with industry-oriented curriculum.",
 };
 
 const ugPrograms = [
@@ -54,6 +54,33 @@ const ugPrograms = [
     duration: "4 Years (8 Semesters)",
     desc: "Software systems, networking, data science, enterprise computing, and security.",
     highlights: ["Data Science", "Enterprise Systems", "Network Security", "Web Technologies"],
+  },
+];
+
+const pgPrograms = [
+  {
+    name: "M.Tech Computer Science & Engineering",
+    code: "MTECH-CSE",
+    intake: 18,
+    duration: "2 Years (4 Semesters)",
+    desc: "Advanced study in algorithms, distributed systems, AI, cloud computing, and research methodology.",
+    highlights: ["Advanced AI", "Cloud Architecture", "Data Engineering", "Research Project"],
+  },
+  {
+    name: "M.Tech VLSI Design",
+    code: "MTECH-VLSI",
+    intake: 18,
+    duration: "2 Years (4 Semesters)",
+    desc: "Focused program on IC design, HDL, verification, semiconductor technology, and EDA tools.",
+    highlights: ["Digital IC Design", "HDL & Verification", "EDA Tools", "Semiconductor Devices"],
+  },
+  {
+    name: "M.Tech Power Electronics",
+    code: "MTECH-PE",
+    intake: 18,
+    duration: "2 Years (4 Semesters)",
+    desc: "Specialization in converters, electric drives, renewable integration, and modern power systems.",
+    highlights: ["Power Converters", "Electric Drives", "Smart Grid", "Renewable Integration"],
   },
 ];
 
@@ -120,6 +147,52 @@ export default function ProgramsPage() {
                 </div>
                 <div className="px-5 pb-5">
                   <Link href="/admissions" className="block text-center bg-[#0d1b4b] hover:bg-orange-700 text-white text-sm font-semibold py-2 rounded-lg transition-colors">
+                    Apply for {prog.code}
+                  </Link>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* PG Programs */}
+      <section id="pg" className="py-16 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4">
+          <h2 className="section-title">Postgraduate Programs (M.Tech)</h2>
+          <p className="section-subtitle">
+            2-Year specialized programs for advanced learning, innovation, and research
+          </p>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {pgPrograms.map((prog) => (
+              <div key={prog.code} className="card group hover:-translate-y-1 transition-transform duration-300">
+                <div className="bg-gradient-to-br from-[#7c2d12] to-[#c2410c] text-white p-5">
+                  <div className="flex justify-between items-start">
+                    <div>
+                      <div className="text-xs text-[#facc15] font-bold tracking-wider mb-1">{prog.code}</div>
+                      <h3 className="font-display font-bold text-base leading-snug">{prog.name}</h3>
+                    </div>
+                    <div className="bg-[#facc15]/20 rounded-lg px-2 py-1 text-center ml-2">
+                      <div className="text-[#facc15] font-bold text-lg">{prog.intake}</div>
+                      <div className="text-white/70 text-xs">seats</div>
+                    </div>
+                  </div>
+                </div>
+                <div className="p-5">
+                  <div className="text-xs text-gray-500 mb-3">
+                    ⏱️ {prog.duration}
+                  </div>
+                  <p className="text-gray-600 text-sm mb-4">{prog.desc}</p>
+                  <div className="flex flex-wrap gap-2">
+                    {prog.highlights.map((h) => (
+                      <span key={h} className="text-xs bg-orange-50 text-orange-700 border border-orange-200 rounded-full px-2 py-0.5">
+                        {h}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+                <div className="px-5 pb-5">
+                  <Link href="/admissions" className="block text-center bg-[#7c2d12] hover:bg-orange-700 text-white text-sm font-semibold py-2 rounded-lg transition-colors">
                     Apply for {prog.code}
                   </Link>
                 </div>

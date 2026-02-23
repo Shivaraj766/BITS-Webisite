@@ -16,6 +16,15 @@ const programs = [
     ],
   },
   {
+    level: "M.Tech",
+    color: "from-amber-600 to-orange-600",
+    courses: [
+      { name: "Computer Science & Engineering", seats: 18, duration: "2 Years" },
+      { name: "VLSI Design", seats: 18, duration: "2 Years" },
+      { name: "Power Electronics", seats: 18, duration: "2 Years" },
+    ],
+  },
+  {
     level: "Diploma",
     color: "from-purple-600 to-pink-600",
     courses: [

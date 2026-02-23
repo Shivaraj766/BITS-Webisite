@@ -48,6 +48,7 @@ const navItems = [
     href: "/programs",
     children: [
       { label: "UG Programs", href: "/programs#ug", icon: "🎓" },
+      { label: "PG Programs", href: "/programs#pg", icon: "🧪" },
       { label: "Curriculum & Syllabus", href: "/programs#curriculum", icon: "📚" },
       { label: "Academic Calendar", href: "/programs#calendar", icon: "📅" },
       { label: "Faculty", href: "/programs#faculty", icon: "👨‍🏫" },
